@@ -1,0 +1,43 @@
+<!-- <div class="container"> -->
+    <h5 class="text-success pb-3">Employee Registration Form</h5>
+    
+    <div *ngIf="errorMsg"class="alert alert-danger">
+      <small>{{errorMsg}}</small>    
+    </div>
+    <form class="form-horizontal" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group row">
+        <label  class="control-label col-sm-2">User Name:</label>
+        <div class="col-sm-2">
+          <input type="text"  [class.is-invalid]="username.invalid && username.touched" formControlName="username" class="form-control" >
+        </div>
+        <div *ngIf="username.invalid && username.touched">
+          <small class="text-danger" *ngIf="username.errors?.required">Username is required</small>
+          <small class="text-danger" *ngIf="username.errors?.minlength">Username must be at least 3 characters</small>
+         <!--<small class="text-danger" *ngIf="userName.errors?.forbiddenName">'{{userName.errors?.forbiddenName.value}}' username not allowed</small>--> 
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label class="control-label col-sm-2">Full Name:</label>
+        <div class="col-sm-2">
+          <input type="text" [class.is-invalid]='name.invalid && name.touched' formControlName="name" class="form-control">
+        </div>
+        <small class="text-danger" *ngIf="name.errors?.required">Full Name is required</small>
+      </div>
+  
+      
+      <div class="form-group row">
+        <label class="control-label col-sm-2">Email:</label>
+        <div class="col-sm-2">
+          <input type="email" [class.is-invalid]="email.invalid && email.touched" formControlName="email" class="form-control col-xs-2">
+        </div>
+        <small class="text-danger" *ngIf="email.errors?.required" >Email is required</small>
+      </div>
+     
+      <button class="btn btn-primary" [disabled]="!employeeForm.valid" type="submit">Register</button>  
+    </form>
+
+    {{employeeForm.status | json}}
+    {{employeeForm.value | json}}
+  <!-- </div> -->

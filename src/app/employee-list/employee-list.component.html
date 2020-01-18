@@ -1,0 +1,29 @@
+<h6 class="pb-5  mb-0">Employees</h6>
+<div class="table-responsive">  
+<table class="table table-bordered table-hover table-sm table-editable">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>
+       <span *ngIf="employee.new" class="badge badge-primary">new</span> {{employee.id}}
+      </td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.username}}</td>
+      <td>{{employee.email}}</td>
+      <td>
+        <button (click)="edit(employee)" class="btn btn-primary btn-sm">
+          <span class="oi oi-pencil"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
